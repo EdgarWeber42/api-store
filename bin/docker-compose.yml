@@ -1,0 +1,11 @@
+# gagar Work in progress ..
+---
+version: '3.8'
+services:
+  db:
+    image: dieselbarbecue/shop-db
+    ports:
+    - "5432:5432"
+
+  api:
+    image: dieselbarbecue/api-store
