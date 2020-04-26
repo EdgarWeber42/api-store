@@ -7,7 +7,7 @@ Goal is to serve the data for the stores (Product referential, events, stocks...
 
 - Java 11 installed and $JAVA_HOME env variable
 - Maven v 3 at least
-- Shop-DB running on localhost:5432 (gitlab.saaas.io/4proj/shop-db, will parameterize db url)
+- [Shop-DB](https://gitlab.saaas.io/4proj/shop-db) running on localhost:5432 (will parameterize db url)
 
 *Docker file in progress 😎*
 
