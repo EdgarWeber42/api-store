@@ -9,8 +9,8 @@ services:
 
 build:
   stage: build
-
   script:
+    - apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
     - ./mvnw clean install
 
 deploy:
