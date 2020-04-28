@@ -12,9 +12,5 @@ build:
   script:
     - apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
     - ./mvnw clean install
-
-deploy:
-  stage: deploy
-  script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD rg.saaas.io
     - ./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=rg.saaas.io/4pjt/$CI_REGISTRY_IMAGE
