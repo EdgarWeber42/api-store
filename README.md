@@ -35,7 +35,7 @@ docker run --rm --name api-store -p 8080:8080 -e API_STORE_PG_URL={shop db url o
 via [Jib](https://github.com/GoogleContainerTools/jib) (recommended)
 
 ```bash
-./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage={Docker hub username}/api-store
+./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=rg.saaas.io/4pjt/api-store:{version}
 ```
 
 via Maven
