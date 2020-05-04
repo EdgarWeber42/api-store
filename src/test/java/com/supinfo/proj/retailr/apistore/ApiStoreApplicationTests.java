@@ -10,4 +10,9 @@ class ApiStoreApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	public void shouldFindAllProducts() throws Exception {
+		
+	}
+
 }

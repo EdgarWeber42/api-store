@@ -1,10 +1,12 @@
 package com.supinfo.proj.retailr.apistore.data.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +29,17 @@ public class Product {
 
     @Column(name = "subfamily")
     private String subfamily;
+
+//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private List<Item> item;
+//
+//    public List<Item> getItem() {
+//        return item;
+//    }
+//
+//    public void setItem(List<Item> item) {
+//        this.item = item;
+//    }
 
     public long getProductId() {
         return productId;
