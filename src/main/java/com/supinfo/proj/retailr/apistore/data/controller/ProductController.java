@@ -22,7 +22,7 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @GetMapping("/products")
-    public Iterable<Product> getProducts(){
+    public Iterable<Product> getProducts(@RequestParam(required = false) String include){
             logger.info("/GET on /products with no ean");
             return this.productRepository.findAll();
     }

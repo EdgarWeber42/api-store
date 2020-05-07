@@ -30,16 +30,16 @@ public class Product implements Serializable {
     @Column(name = "subfamily")
     private String subfamily;
 
-//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private List<Item> item;
-//
-//    public List<Item> getItem() {
-//        return item;
-//    }
-//
-//    public void setItem(List<Item> item) {
-//        this.item = item;
-//    }
+    @Column(name = "image_prefix")
+    private String imagePrefix;
+
+    public String getImagePrefix() {
+        return imagePrefix;
+    }
+
+    public void setImagePrefix(String imagePrefix) {
+        this.imagePrefix = imagePrefix;
+    }
 
     public long getProductId() {
         return productId;
