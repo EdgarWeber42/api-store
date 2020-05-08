@@ -71,5 +71,4 @@ public class ProductController {
             return "{\"Product successfully created\":1}";
         }
     }
-
 }

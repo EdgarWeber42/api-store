@@ -1,4 +1,4 @@
-package com.supinfo.proj.retailr.apistore.data.config;
+package com.supinfo.proj.retailr.apistore.config;
 
 import com.supinfo.proj.retailr.apistore.data.entity.Home;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,10 @@ public class HomeConfig {
                 "/products",
                 "/items",
                 "/stores",
-                "/stocks"
+                "/stocks",
+                "/departments",
+                "families",
+                "/subfamilies"
         );
     }
 }

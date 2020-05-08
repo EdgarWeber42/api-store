@@ -1,4 +1,4 @@
-package com.supinfo.proj.retailr.apistore.data.controller;
+package com.supinfo.proj.retailr.apistore.data.conSALEtroller;
 
 import com.supinfo.proj.retailr.apistore.data.entity.Stock;
 import com.supinfo.proj.retailr.apistore.data.repository.StockRepository;

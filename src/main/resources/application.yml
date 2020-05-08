@@ -8,6 +8,8 @@ spring:
     url: "jdbc:postgresql://${API_STORE_PG_URL}/dev"
     username: "postgres"
     password: "postgres"
+security:
+
 logging:
   level:
     org:
