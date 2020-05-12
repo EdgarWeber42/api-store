@@ -1,5 +1,9 @@
 package com.supinfo.proj.retailr.apistore.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,18 +16,29 @@ import java.util.Collection;
 public class User implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    @Column(name = "id")
+    private Integer id;
 
+    @Column(name = "username")
     private String username;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(name = "password")
     private String password;
 
-    public Integer getUserId() {
-        return userId;
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "customer_id")
+    @Nullable
+    private Integer customer_id;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override
@@ -44,6 +59,22 @@ public class User implements Serializable, UserDetails {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Integer getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(Integer customer_id) {
+        this.customer_id = customer_id;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -51,21 +82,21 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
