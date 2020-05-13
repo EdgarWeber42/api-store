@@ -4,11 +4,12 @@ import com.sun.istack.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "Stores")
-public class Store {
+public class Store implements Serializable {
     @Id
     @Column(name = "store_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
