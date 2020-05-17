@@ -1,10 +1,15 @@
 package com.supinfo.proj.retailr.apistore.data.entity;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.TermVector;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Indexed
 @Table(name = "products")
 public class Product implements Serializable {
     @Id
@@ -15,6 +20,7 @@ public class Product implements Serializable {
     @Column(name = "ean")
     private String ean;
 
+    @Field
     @Column(name = "name")
     private String name;
 

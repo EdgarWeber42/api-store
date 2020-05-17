@@ -33,6 +33,10 @@ public class User implements Serializable, UserDetails {
     @Nullable
     private Integer customer_id;
 
+    @Column(name = "staff_id")
+    @Nullable
+    private Integer staff_id;
+
     public Integer getId() {
         return id;
     }
@@ -73,6 +77,14 @@ public class User implements Serializable, UserDetails {
 
     public void setCustomer_id(Integer customer_id) {
         this.customer_id = customer_id;
+    }
+
+    public Integer getStaff_id() {
+        return staff_id;
+    }
+
+    public void setStaff_id(Integer staff_id) {
+        this.staff_id = staff_id;
     }
 
     @Override

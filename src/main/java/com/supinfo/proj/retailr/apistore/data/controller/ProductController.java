@@ -2,11 +2,13 @@ package com.supinfo.proj.retailr.apistore.data.controller;
 
 import com.supinfo.proj.retailr.apistore.data.entity.Product;
 import com.supinfo.proj.retailr.apistore.data.repository.ProductRepository;
+import com.supinfo.proj.retailr.apistore.data.repository.ProductSearch;
 import javassist.NotFoundException;
 import org.aspectj.weaver.ast.Not;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,10 +23,17 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private ProductSearch productSearch;
+
     @GetMapping("/products")
-    public Iterable<Product> getProducts(@RequestParam(required = false) String include){
+    public ResponseEntity<?> getProducts(@RequestParam(required = false) String fts){
+        if (fts != null){
+            logger.info("FTS on /products" + fts);
+            return ResponseEntity.ok().body(this.productSearch.searchByName(fts));
+        }
             logger.info("/GET on /products with no ean");
-            return this.productRepository.findAll();
+            return ResponseEntity.ok().body(this.productRepository.findAll());
     }
 
     @GetMapping("/products/{ean}")
