@@ -18,11 +18,23 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/users")
-    public ResponseEntity<?> getUsers(){
+    @GetMapping("/users/{username}")
+    public ResponseEntity<?> getUsers(@PathVariable(required = false) String username){
         logger.info("GET on /users");
-        return ResponseEntity.ok(this.userRepository.findAll());
+        if (username != null){
+            logger.info("GET on /users/{username} with param " + username);
+            if (this.userRepository.existsByUsername(username)){
+                return ResponseEntity.ok().body(this.userRepository.findByUsername(username));
+            } else {
+                return ResponseEntity.ok().body(new Response("username " + username + " doesn't exist"));
+            }
+        } else {
+            logger.info("GET on /users");
+            return ResponseEntity.ok(this.userRepository.findAll());
+        }
     }
+
+    @GetMapping()
 
     @PostMapping("/users/delete/{username}")
     public ResponseEntity<?> deleteUser(@PathVariable String username){
