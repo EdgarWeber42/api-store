@@ -29,7 +29,7 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<?> getProducts(@RequestParam(required = false) String fts){
         if (fts != null){
-            logger.info("FTS on /products" + fts);
+            logger.info("FTS on /products : " + fts);
             return ResponseEntity.ok().body(this.productSearch.searchByName(fts));
         }
             logger.info("/GET on /products with no ean");
