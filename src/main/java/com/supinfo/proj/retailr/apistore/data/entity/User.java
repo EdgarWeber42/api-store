@@ -29,13 +29,15 @@ public class User implements Serializable, UserDetails {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "customer_id")
     @Nullable
-    private Integer customer_id;
+    @OneToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
 
-    @Column(name = "staff_id")
     @Nullable
-    private Integer staff_id;
+    @OneToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name = "staff_id", referencedColumnName = "id")
+    private Staff staff;
 
     public Integer getId() {
         return id;
@@ -71,20 +73,20 @@ public class User implements Serializable, UserDetails {
         this.role = role;
     }
 
-    public Integer getCustomer_id() {
-        return customer_id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomer_id(Integer customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public Integer getStaff_id() {
-        return staff_id;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setStaff_id(Integer staff_id) {
-        this.staff_id = staff_id;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
     @Override
