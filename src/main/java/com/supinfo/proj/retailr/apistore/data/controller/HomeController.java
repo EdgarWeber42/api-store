@@ -62,7 +62,7 @@ public class HomeController {
         return ResponseEntity.ok(new AuthenticationResponse(jwt, null));
     }
 
-    @PostMapping("/register")
+    @PostMapping("/user/create")
     public ResponseEntity<?> registerUser(@RequestBody @Valid User user, BindingResult result) {
         logger.info("register : " + user.getUsername() + " " + user.getPassword() + " " + user.getRole());
         if (!result.hasErrors()) {

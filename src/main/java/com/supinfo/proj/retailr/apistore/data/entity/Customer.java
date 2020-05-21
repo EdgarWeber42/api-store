@@ -1,5 +1,7 @@
 package com.supinfo.proj.retailr.apistore.data.entity;
 
+import com.fasterxml.jackson.databind.deser.BuilderBasedDeserializer;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -25,6 +27,72 @@ public class Customer implements Serializable {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    public Customer() {
+    }
+
+    private Customer(String firstName, String lastName, String email, String address, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public static class Builder{
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String address;
+        private String phoneNumber;
+
+        public Builder withFirstName(String firstName){
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder withLastName(String lastName){
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder withEmail(String email){
+            this.email = email;
+            return this;
+        }
+
+        public Builder withAddress(String address){
+            this.address = address;
+            return this;
+        }
+
+        public Builder withPhoneNumber(String phoneNumber){
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        public Customer build(){
+            return new Customer(
+                    firstName,
+                    lastName,
+                    email,
+                    address,
+                    phoneNumber
+            );
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "Id=" + Id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 
     public Long getId() {
         return Id;

@@ -39,12 +39,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers(
                         "/authenticate",
                         "/register",
-                        "/products"
+                        "/products",
+                        "/customer/register",
+                        "/webjars/**",
+                        "/v2/api-docs",
+                        "/swagger-ui.html",
+                        "/swagger-resources/**"
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
     }
 
     @Override

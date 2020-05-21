@@ -39,6 +39,72 @@ public class User implements Serializable, UserDetails {
     @JoinColumn(name = "staff_id", referencedColumnName = "id")
     private Staff staff;
 
+    public User(){
+    }
+
+    private User(String username, String password, String role, Customer customer, Staff staff) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.customer = customer;
+        this.staff = staff;
+    }
+
+    public static class Builder {
+        private String username;
+        private String password;
+        private String role;
+        private Customer customer;
+        private Staff staff;
+
+        public Builder withUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder withPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder withRole(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder withCustomer(Customer customer){
+            this.customer = customer;
+            return this;
+        }
+
+        public Builder withStaff(Staff staff) {
+            this.staff = staff;
+            return this;
+        }
+
+        public User build(){
+            return new User(
+                    username,
+                    password,
+                    role,
+                    customer,
+                    staff
+            );
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", customer=" + customer +
+                ", staff=" + staff +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

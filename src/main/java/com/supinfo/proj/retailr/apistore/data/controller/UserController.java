@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -19,27 +16,25 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/users/{username}")
-    public ResponseEntity<?> getUsers(@PathVariable(required = false) String username){
-        logger.info("GET on /users");
-        if (username != null){
-            logger.info("GET on /users/{username} with param " + username);
-            if (this.userRepository.existsByUsername(username)){
-                return ResponseEntity.ok().body(this.userRepository.findByUsername(username));
-            } else {
-                return ResponseEntity.ok().body(new Response("username " + username + " doesn't exist"));
-            }
+    public ResponseEntity<?> getUserByUsername(@PathVariable(required = false) String username) {
+        logger.info("GET on /users/{username} with param " + username);
+        if (this.userRepository.existsByUsername(username)) {
+            return ResponseEntity.ok().body(this.userRepository.findByUsername(username));
         } else {
-            logger.info("GET on /users");
-            return ResponseEntity.ok(this.userRepository.findAll());
+            return ResponseEntity.ok().body(new Response("username " + username + " doesn't exist"));
         }
     }
 
-    @GetMapping()
+    @GetMapping("/users")
+    public ResponseEntity<?> getUsers() {
+        logger.info("GET on /users");
+        return ResponseEntity.ok(this.userRepository.findAll());
+    }
 
-    @PostMapping("/users/delete/{username}")
-    public ResponseEntity<?> deleteUser(@PathVariable String username){
+    @DeleteMapping("/users/{username}")
+    public ResponseEntity<?> deleteUser(@PathVariable String username) {
         logger.info("POST on /users/delete/{username} with param : " + username);
-        if (this.userRepository.existsByUsername(username)){
+        if (this.userRepository.existsByUsername(username)) {
             this.userRepository.delete(this.userRepository.findByUsername(username).get());
             return ResponseEntity.ok().body(new Response("User " + username + " successfully deleted"));
         } else {

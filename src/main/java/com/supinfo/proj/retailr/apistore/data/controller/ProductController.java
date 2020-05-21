@@ -3,6 +3,7 @@ package com.supinfo.proj.retailr.apistore.data.controller;
 import com.supinfo.proj.retailr.apistore.data.entity.Product;
 import com.supinfo.proj.retailr.apistore.data.repository.ProductRepository;
 import com.supinfo.proj.retailr.apistore.data.repository.ProductSearch;
+import com.supinfo.proj.retailr.apistore.service.ProductSearchService;
 import javassist.NotFoundException;
 import org.aspectj.weaver.ast.Not;
 import org.slf4j.Logger;
@@ -24,13 +25,13 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @Autowired
-    private ProductSearch productSearch;
+    private ProductSearchService productSearchService;
 
     @GetMapping("/products")
     public ResponseEntity<?> getProducts(@RequestParam(required = false) String fts){
         if (fts != null){
             logger.info("FTS on /products : " + fts);
-            return ResponseEntity.ok().body(this.productSearch.searchByName(fts));
+            return ResponseEntity.ok().body(this.productSearchService.search(fts));
         }
             logger.info("/GET on /products with no ean");
             return ResponseEntity.ok().body(this.productRepository.findAll());

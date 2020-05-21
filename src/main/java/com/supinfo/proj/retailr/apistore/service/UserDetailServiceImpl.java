@@ -46,7 +46,8 @@ public class UserDetailServiceImpl implements UserDetailsService, UserDetailsMan
 
     @Override
     public void deleteUser(String s) {
-
+        User user = this.userRepository.findByUsername(s).get();
+        this.userRepository.delete(user);
     }
 
     @Override
