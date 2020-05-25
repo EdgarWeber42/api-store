@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.deser.BuilderBasedDeserializer;
 
+import javax.validation.constraints.NotNull;
+
 public class CustomerProfile {
 
     private String username;

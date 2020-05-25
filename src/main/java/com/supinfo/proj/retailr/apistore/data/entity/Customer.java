@@ -3,6 +3,10 @@ package com.supinfo.proj.retailr.apistore.data.entity;
 import com.fasterxml.jackson.databind.deser.BuilderBasedDeserializer;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -14,12 +18,19 @@ public class Customer implements Serializable {
     private Long Id;
 
     @Column(name = "firstname")
+    @NotEmpty(message = "First Name may not be empty")
+    @NotBlank(message = "First name may not be blank")
     private String firstName;
 
     @Column(name = "lastname")
+    @NotEmpty(message = "last name may not be empty")
+    @NotBlank(message = "last name may not be blank")
     private String lastName;
 
     @Column(name = "email")
+    @NotEmpty(message = "Email address may not be empty")
+    @NotBlank(message = "Email address may not be blank")
+    @Email
     private String email;
 
     @Column(name = "address")

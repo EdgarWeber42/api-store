@@ -46,9 +46,13 @@ public class CustomerProfileService {
                     .withStaff(null)
                     .build();
 
-            this.customerRepository.save(customer);
-            this.userDetailService.createUser(user);
-
+            try {
+                //validation occurs at the model level too (through validation annotations)
+                this.customerRepository.save(customer);
+                this.userDetailService.createUser(user);
+            } catch (Exception e){
+                throw new Exception(e.getMessage());
+            }
         } else {
             throw new Exception("Passwords are null or do not match");
         }

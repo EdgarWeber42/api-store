@@ -8,6 +8,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -20,10 +23,14 @@ public class User implements Serializable, UserDetails {
     private Integer id;
 
     @Column(name = "username")
+    @NotEmpty(message = "Username may not be empty")
+    @NotBlank(message = "Username may not be blank")
     private String username;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "password")
+    @NotEmpty(message = "Password may not be empty")
+    @NotBlank(message = "Password may not be blank")
     private String password;
 
     @Column(name = "role")
