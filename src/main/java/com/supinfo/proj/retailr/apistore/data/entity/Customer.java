@@ -1,6 +1,7 @@
 package com.supinfo.proj.retailr.apistore.data.entity;
 
 import com.fasterxml.jackson.databind.deser.BuilderBasedDeserializer;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -20,16 +21,19 @@ public class Customer implements Serializable {
     @Column(name = "firstname")
     @NotEmpty(message = "First Name may not be empty")
     @NotBlank(message = "First name may not be blank")
+    @ApiModelProperty(required = true)
     private String firstName;
 
     @Column(name = "lastname")
     @NotEmpty(message = "last name may not be empty")
     @NotBlank(message = "last name may not be blank")
+    @ApiModelProperty(required = true)
     private String lastName;
 
     @Column(name = "email")
     @NotEmpty(message = "Email address may not be empty")
     @NotBlank(message = "Email address may not be blank")
+    @ApiModelProperty(required = true)
     @Email
     private String email;
 

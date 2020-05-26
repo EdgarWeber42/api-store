@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.Nullable;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,12 +26,14 @@ public class User implements Serializable, UserDetails {
     @Column(name = "username")
     @NotEmpty(message = "Username may not be empty")
     @NotBlank(message = "Username may not be blank")
+    @ApiModelProperty(required = true)
     private String username;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "password")
     @NotEmpty(message = "Password may not be empty")
     @NotBlank(message = "Password may not be blank")
+    @ApiModelProperty(required = true)
     private String password;
 
     @Column(name = "role")

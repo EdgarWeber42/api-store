@@ -3,26 +3,33 @@ package com.supinfo.proj.retailr.apistore.service.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.deser.BuilderBasedDeserializer;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
 public class CustomerProfile {
 
+    @ApiModelProperty(required = true)
     private String username;
 
+    @ApiModelProperty(required = true)
     private String firstName;
 
+    @ApiModelProperty(required = true)
     private String lastName;
 
     private String address;
 
+    @ApiModelProperty(required = true)
     private String email;
 
     private String phoneNumber;
 
+    @ApiModelProperty(required = true)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    @ApiModelProperty(required = true)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String confirmPassword;
 
