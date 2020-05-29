@@ -35,6 +35,16 @@ public class ItemController {
         }
     }
 
+    @GetMapping("/items/ean/{ean}")
+    public ResponseEntity<?> getItemByEan(@PathVariable String ean){
+        logger.info("GET on /items/ean/{ean} with param : " + ean);
+        if (this.itemRepository.existsByProductEan(ean)){
+            return ResponseEntity.ok(this.itemRepository.findByProductEan(ean));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/items/update/{epc}")
     public ResponseEntity<String> updateItem(@PathVariable String epc, @RequestBody(required = false) @Valid Item item, @RequestParam(required = false) String state){
         if (this.itemRepository.existsByEpc(epc)){

@@ -36,6 +36,19 @@ public class Event implements Serializable {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", store_id=" + store_id +
+                ", device=" + device +
+                ", customer=" + customer +
+                ", staff=" + staff +
+                ", amount=" + amount +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 
     public long getId() {
         return id;

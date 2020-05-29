@@ -9,5 +9,7 @@ import java.util.Optional;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
     boolean existsByEpc(String string);
+    boolean existsByProductEan(String ean);
+    Iterable<Item> findByProductEan(String ean);
     Optional<Item> findItemByEpc(String string);
 }

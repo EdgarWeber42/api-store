@@ -18,6 +18,9 @@ public class Item implements Serializable {
     @Column(name = "epc")
     private String epc;
 
+    @Column(name = "store_id")
+    private long storeId;
+
     @Column(name = "state")
     private String state;
 
@@ -43,6 +46,14 @@ public class Item implements Serializable {
 
     public void setEpc(String epc) {
         this.epc = epc;
+    }
+
+    public long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(long storeId) {
+        this.storeId = storeId;
     }
 
     public String getState() {

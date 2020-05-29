@@ -21,6 +21,16 @@ public class Device implements Serializable{
     @JoinColumn(name = "store_id", referencedColumnName = "store_id", nullable = true)
     private Store store;
 
+    @Override
+    public String toString() {
+        return "Device{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", store=" + store +
+                '}';
+    }
+
     public long getId() {
         return id;
     }

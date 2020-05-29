@@ -24,6 +24,9 @@ public class Store implements Serializable {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "type")
+    private String type;
+
     public long getStoreId() {
         return storeId;
     }
@@ -38,6 +41,14 @@ public class Store implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getAddress() {
