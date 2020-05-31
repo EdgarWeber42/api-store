@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/authenticate",
                         "/register",
                         "/products",
+                        "/stores",
+                        "/stocks",
                         "/customer/register",
                         "/webjars/**",
                         "/v2/api-docs",
