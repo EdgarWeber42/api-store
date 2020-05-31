@@ -31,4 +31,12 @@ public class EventService {
         }
         return events;
     }
+
+    public void createEvent(Event event) throws Exception {
+        try {
+            this.eventRepository.save(event);
+        } catch (Exception e) {
+            throw new Exception("couldn't save event : " + e.getCause());
+        }
+    }
 }

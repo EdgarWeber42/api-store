@@ -36,6 +36,24 @@ public class Event implements Serializable {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
+    public Event() {
+    }
+
+    private Event(String type, long store_id, Device device, Customer customer, Staff staff, Long amount, Timestamp timestamp) {
+        this.type = type;
+        this.store_id = store_id;
+        this.device = device;
+        this.customer = customer;
+        this.staff = staff;
+        this.amount = amount;
+        this.timestamp = timestamp;
+    }
+
+    public static class Builder{
+        private String type;
+        private long store_id;
+    }
+
     @Override
     public String toString() {
         return "Event{" +

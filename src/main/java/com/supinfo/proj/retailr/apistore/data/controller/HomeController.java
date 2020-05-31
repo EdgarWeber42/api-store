@@ -54,7 +54,7 @@ public class HomeController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
         } catch (BadCredentialsException e) {
-            return ResponseEntity.ok(new AuthenticationResponse(null, "Invalid username or password"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AuthenticationResponse(null, "Invalid username or password"));
         }
         final UserDetails userDetails = userDetailService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
