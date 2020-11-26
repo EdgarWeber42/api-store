@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
+    boolean existsByEan(String ean);
     Optional<Product> findProductByEan(String string);
     Iterable<Product> findProductByDepartment(String string);
     Iterable<Product> findProductByFamily(String string);
